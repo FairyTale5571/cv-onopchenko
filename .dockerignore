@@ -1,0 +1,8 @@
+.git
+.gitignore
+README.md
+dist/
+*.pdf
+.github/
+.env
+*.log 
