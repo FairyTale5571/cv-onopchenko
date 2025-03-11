@@ -26,51 +26,29 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (exportButton) {
     exportButton.addEventListener('click', function() {
-      // Show a loading indicator or message
+      // Show loading indicator
       const originalContent = exportButton.innerHTML;
       exportButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>';
       exportButton.disabled = true;
       
-      // Send request to the server to generate PDF
-      fetch('/export-pdf')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.blob();
-        })
-        .then(blob => {
-          // Create a URL for the blob
-          const url = window.URL.createObjectURL(blob);
-          
-          // Create a temporary link element
-          const a = document.createElement('a');
-          a.style.display = 'none';
-          a.href = url;
-          a.download = 'resume.pdf';
-          
-          // Append to the document and trigger the download
-          document.body.appendChild(a);
-          a.click();
-          
-          // Clean up
-          window.URL.revokeObjectURL(url);
-          document.body.removeChild(a);
-          
-          // Reset the button
-          exportButton.innerHTML = originalContent;
-          exportButton.disabled = false;
-        })
-        .catch(error => {
-          console.error('Error exporting PDF:', error);
-          
-          // Show error message
-          alert('Failed to export PDF. Please try again.');
-          
-          // Reset the button
-          exportButton.innerHTML = originalContent;
-          exportButton.disabled = false;
-        });
+      // Create a link to download the static PDF
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = '/static/resume.pdf';
+      a.download = 'resume.pdf';
+      
+      // Append to the document and trigger the download
+      document.body.appendChild(a);
+      a.click();
+      
+      // Clean up
+      document.body.removeChild(a);
+      
+      // Reset the button
+      setTimeout(() => {
+        exportButton.innerHTML = originalContent;
+        exportButton.disabled = false;
+      }, 1000);
     });
   }
 
