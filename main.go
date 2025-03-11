@@ -13,7 +13,6 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-// PDF constants
 const (
 	// PDF settings
 	PDFOrientation = "P"
