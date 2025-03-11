@@ -1,0 +1,213 @@
+package components
+
+templ Layout(title string) {
+	<!DOCTYPE html>
+	<html lang="en" class="light">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+			<meta http-equiv="Pragma" content="no-cache"/>
+			<meta http-equiv="Expires" content="0"/>
+			<title>{ title }</title>
+			<link rel="stylesheet" href="/static/css/style.css?v=1.7"/>
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"/>
+			<style>
+				/* Встроенные стили, которые гарантированно применятся */
+				.container {
+					max-width: 900px !important;
+					width: 75% !important;
+					margin: 0 auto;
+					padding: 2rem;
+				}
+				
+				/* Плавная анимация для всех элементов при смене темы */
+				*, *::before, *::after {
+					transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+				}
+				
+				/* Оптимизация анимации для списков */
+				ul, li {
+					transition: color 0.3s ease !important;
+				}
+				
+				/* Отключаем анимацию для некоторых свойств, чтобы избежать задержек */
+				.list-disc, .pl-5, .space-y-1, .mb-4 {
+					transition: none !important;
+				}
+				
+				/* Специальные стили для оптимизированных списков */
+				.theme-optimized-list {
+					transition: none !important;
+					will-change: contents;
+				}
+				
+				.theme-optimized-item {
+					transition: color 0.15s ease !important;
+					will-change: color;
+				}
+				
+				/* Анимация только для цвета текста в списках */
+				.list-disc li {
+					transition: color 0.3s ease !important;
+				}
+				
+				/* Анимация для карточек опыта работы */
+				.experience-card {
+					transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, border-color 0.3s ease;
+				}
+				
+				.experience-card:hover {
+					transform: translateY(-3px);
+					box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+				}
+				
+				/* Анимация для мини-карточек технологий */
+				.tech-badge {
+					transition: transform 0.2s ease, background-color 0.2s ease;
+				}
+				
+				.tech-badge:hover {
+					transform: translateY(-2px);
+					background-color: var(--badge-hover-bg, hsl(var(--primary))) !important;
+					color: var(--badge-hover-text, hsl(var(--primary-foreground))) !important;
+				}
+				
+				/* Анимация для мини-карточек навыков */
+				.skill-badge {
+					transition: transform 0.2s ease, background-color 0.2s ease;
+					cursor: pointer;
+				}
+				
+				.skill-badge:hover {
+					transform: translateY(-2px);
+					background-color: hsl(var(--primary)) !important;
+					color: hsl(var(--primary-foreground)) !important;
+				}
+				
+				/* Цвета шапки */
+				header {
+					background-color: hsl(210, 100%, 20%) !important;
+					color: white !important;
+				}
+				
+				.dark header {
+					background-color: hsl(210, 80%, 15%) !important;
+					color: white !important;
+				}
+				
+				/* Гарантируем, что весь текст в шапке будет белым */
+				header h1, 
+				header h2, 
+				header p, 
+				header a, 
+				header span {
+					color: white !important;
+				}
+				
+				header a {
+					opacity: 0.9;
+					transition: opacity 0.2s ease;
+				}
+				
+				header a:hover {
+					text-decoration: underline;
+					opacity: 1;
+				}
+				
+				/* Убеждаемся, что иконки тоже белые */
+				header svg {
+					stroke: white !important;
+				}
+				
+				.skills-container {
+					grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+				}
+				
+				.languages-list {
+					grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+				}
+				
+				@media (max-width: 1200px) {
+					.container {
+						width: 85% !important;
+					}
+				}
+				
+				@media (max-width: 992px) {
+					.container {
+						width: 90% !important;
+					}
+				}
+				
+				@media (max-width: 768px) {
+					.container {
+						width: 100% !important;
+					}
+				}
+			</style>
+			<script src="https://cdn.tailwindcss.com"></script>
+			<script>
+				tailwind.config = {
+					darkMode: 'class',
+					theme: {
+						extend: {
+							colors: {
+								border: "hsl(var(--border))",
+								input: "hsl(var(--input))",
+								ring: "hsl(var(--ring))",
+								background: "hsl(var(--background))",
+								foreground: "hsl(var(--foreground))",
+								primary: {
+									DEFAULT: "hsl(var(--primary))",
+									foreground: "hsl(var(--primary-foreground))",
+								},
+								secondary: {
+									DEFAULT: "hsl(var(--secondary))",
+									foreground: "hsl(var(--secondary-foreground))",
+								},
+								destructive: {
+									DEFAULT: "hsl(var(--destructive))",
+									foreground: "hsl(var(--destructive-foreground))",
+								},
+								muted: {
+									DEFAULT: "hsl(var(--muted))",
+									foreground: "hsl(var(--muted-foreground))",
+								},
+								accent: {
+									DEFAULT: "hsl(var(--accent))",
+									foreground: "hsl(var(--accent-foreground))",
+								},
+								card: {
+									DEFAULT: "hsl(var(--card))",
+									foreground: "hsl(var(--card-foreground))",
+								},
+							},
+							borderRadius: {
+								lg: "var(--radius)",
+								md: "calc(var(--radius) - 2px)",
+								sm: "calc(var(--radius) - 4px)",
+							},
+							fontFamily: {
+								sans: ['Montserrat', 'sans-serif'],
+							},
+							fontWeight: {
+								normal: 500,
+								medium: 500,
+								semibold: 600,
+								bold: 700,
+							},
+						}
+					}
+				}
+			</script>
+			<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+		</head>
+		<body class="bg-background text-foreground font-sans font-medium">
+			<div class="container mx-auto px-4 py-8">
+				{ children... }
+			</div>
+			<script src="/static/js/main.js"></script>
+		</body>
+	</html>
+} 
