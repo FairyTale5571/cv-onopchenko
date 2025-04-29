@@ -115,7 +115,7 @@ experience:
     startDate: "Mar 2022"
     endDate: "Present"
     description:
-      - "Developed and deployed microservices and applications, integrated Telegram and Discord APIs, payment systems, and Web3 technologies."
+      - "Developed and deployed microservices and applications, integrated Telegram and Discord APIs, payment systems, Web3 technologies."
     technologies:
       - name: "Go"
         link: "https://golang.org/"
@@ -140,7 +140,7 @@ experience:
     startDate: "Oct 2023"
     endDate: "May 2024"
     description:
-      - "Developed crypto arbitrage and DEX-CEX solutions using Golang, NATS, Postgres, Redis, and smart contracts with Solidity."
+      - "Developed crypto arbitrage and DEX-CEX solutions using Golang, NATS, Postgres, Redis, smart contracts with Solidity."
     technologies:
       - name: "Go"
         link: "https://golang.org/"
@@ -160,7 +160,7 @@ experience:
     startDate: "Sep 2022"
     endDate: "Jul 2023"
     description:
-      - "Developed Golang backend services, integrated third-party services, wrote unit tests, and enhanced functionality for a Health-Care Australian project."
+      - "Developed Golang backend services, integrated third-party services, wrote unit tests, enhanced functionality for a Health-Care Australian project."
     technologies:
       - name: "Go"
         link: "https://golang.org/"
@@ -182,7 +182,7 @@ experience:
     startDate: "Mar 2018"
     endDate: "Feb 2022"
     description:
-      - "Game design, development of CRM and anti-cheat systems, community management, and monetization strategies."
+      - "Game design, development of CRM and anti-cheat systems, community management, monetization strategies."
     technologies:
       - name: "Game Design"
         link: "https://en.wikipedia.org/wiki/Game_design"
